@@ -102,8 +102,9 @@ public class BankLogic {
 		Account account = customer.getAccountObject(accountId);
 
 		if (account != null) {
-			account.deposit(amount);
+			if(account.deposit(amount)){
 			depositAccepted = true;
+			}
 		} else {
 			System.out.println("Either personal ID or account ID was incorrect");
 		}
@@ -115,9 +116,12 @@ public class BankLogic {
 
 		Customer customer = getCustomerObject(pNo);
 		Account account = customer.getAccountObject(accountId);
-		if (account != null) {
-			account.withdraw(amount);
-			withdrawalAccepted = true;
+
+		if (account != null && customer != null) {
+			if(account.withdraw(amount)){
+				withdrawalAccepted = true;
+			}
+			
 		} else {
 			System.out.println("Either personal ID or account ID was incorrect");
 		}
@@ -131,11 +135,11 @@ public class BankLogic {
 			Customer customer = getCustomerObject(pNr);
 			Account account = customer.getAccountObject(accNr);
 
-			if(customer != null && account != null){
-			double interest = account.getInterest();
-			customer.closeAccount(account);
-			output = "The account with nr " + account.getAccountNr() + " " + " has been closed, the final interest is; "
-					+ interest + " kr";
+			if (customer != null && account != null) {
+				double interest = account.getInterest();
+				customer.closeAccount(account);
+				output = "The account with nr " + account.getAccountNr() + " "
+						+ " has been closed, the final interest is; " + interest + " kr";
 			}
 		} else {
 			System.err.println("Wrong input");
@@ -182,29 +186,30 @@ public class BankLogic {
 		}
 		return exists;
 	}
+
 	public Customer getCustomerObject(String pNr) {
 
 		Customer customer = null;
-	
+
 		for (Customer c : customerList) {
 
 			if (c.getPersonalID().equals(pNr)) {
-			  customer = c;
+				customer = c;
 			}
-		  
+
 		}
 		return customer;
-	  }
+	}
 
 	// private Customer getCustomerObject(String pNr) {
-	// 	Customer customer = null;
+	// Customer customer = null;
 
-	// 	for (Customer c : customerList) {
-	// 		if (c.getPersonalID().equals(pNr)) {
-	// 			customer = c;
-	// 		}
-	// 	}
-	// 	return customer;
+	// for (Customer c : customerList) {
+	// if (c.getPersonalID().equals(pNr)) {
+	// customer = c;
+	// }
+	// }
+	// return customer;
 	// }
 
 }
