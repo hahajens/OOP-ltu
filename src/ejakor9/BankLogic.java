@@ -18,19 +18,18 @@ public class BankLogic {
 		return stringList;
 	}
 
-	// Skapar en ny kund
+	// Skapa en ny kund
 	public boolean createCustomer(String name, String surname, String pNo) {
-		boolean isCreated = false;
-		if (customerExists(pNo) == false) {
+
+		if (!customerExists(pNo)) {
 			Customer customer = new Customer(name, surname, pNo);
 			customerList.add(customer);
 			System.out.println("Customer named " + name + " " + surname + " was created");
-			isCreated = true;
+			return true;
 		} else {
 			System.out.println("A customer with that personal number already exists");
-			isCreated = false;
+			return false;
 		}
-		return isCreated;
 	}
 
 	// Få information om en kund med ett personnummer
