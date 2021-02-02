@@ -12,28 +12,27 @@ public class Customer {
 	private String firstName;
 	private String lastName;
 	private String personalID;
-	private ArrayList<Account> accounts = new ArrayList<Account>();
+	private ArrayList<Account> accounts = new ArrayList<>();
 
+	// Skapar ett kundobjekt, gör en väldigt enkel koll på personnr
 	public Customer(String firstName, String lastName, String personalID) {
 		this.firstName = firstName;
 		this.lastName = lastName;
-
 		if (personalID.length() != 10) {
 			System.out.println("Social number must be in format YYMMDDXXXX");
 		} else {
 			this.personalID = personalID;
-
 		}
 	}
 
+	// Skapar ett bankkonto tillhörande en kund
 	public int createAccount() {
-		Account newAcc = new Account();
-		accounts.add(newAcc);
-		return newAcc.getAccountNr();
+		Account account = new Account();
+		accounts.add(account);
+		return account.getAccountNr();
 	}
 
-	// Getters och setters
-
+	// Getters
 	public String getFirstName() {
 		return firstName;
 	}
@@ -46,10 +45,12 @@ public class Customer {
 		return this.personalID;
 	}
 
+	// används i deletecustomer
 	public String getCustomerInformation() {
 		return this.firstName + " " + this.lastName + " " + this.personalID;
-	  }
+	}
 
+	// Setters
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
@@ -58,41 +59,44 @@ public class Customer {
 		this.lastName = lastName;
 	}
 
+	// returnerar strängrepresentaton av kundobjekt
 	public String toString() {
-		return"Name: " + this.firstName + " " + this.lastName + "\n" + "ID number: "
-				+ this.personalID + "\n" + 
-				"Accounts: " + this.accounts;
+		return "Name: " + this.firstName + " " + this.lastName + "\n" + "ID number: " + this.personalID + "\n"
+				+ "Accounts: " + this.accounts;
 	}
 
+	// returnerar en lista på de konton som tillhör en specifik kund
 	public ArrayList<Account> getAccounts() {
 		return this.accounts;
 	}
 
-	public ArrayList<String> getAccountsAsStrings(){
+	// returnerar en lista på kontoinformation i typ String
+	public ArrayList<String> getAccountsAsStrings() {
 		ArrayList<String> output = new ArrayList<>();
-
-		for(Account account : accounts){
-			output.add(account.getAccountNr() + " " + account.getBalance() + " " + account.getAccountType() + " " + account.getInterest());
+		for (Account account : accounts) {
+			output.add(account.getAccountNr() + " " + account.getBalance() + " " + account.getAccountType() + " "
+					+ account.getInterest());
 		}
 		return output;
 	}
 
-	public String getAccountInformation(int accNr){
+	// returnerar en strängrepresentation av ett konto.
+	public String getAccountInformation(int accNr) {
 		String output = null;
-		for(Account account : accounts){
-			if(account.getAccountNr() == accNr){
+		for (Account account : accounts) {
+			if (account.getAccountNr() == accNr) {
 				output = account.toString();
 				break;
 			}
 		}
 		return output;
 	}
-	
-	public Account getAccountObject(int accNr){
-		Account account = null;
 
-		for(Account a : accounts){
- 			if(a.getAccountNr() == accNr){
+	// Returnerar en kund konto
+	public Account getAccountObject(int accNr) {
+		Account account = null;
+		for (Account a : accounts) {
+			if (a.getAccountNr() == accNr) {
 				account = a;
 				break;
 			}
@@ -100,24 +104,13 @@ public class Customer {
 		return account;
 	}
 
-	public boolean accountExists(int accNr) {
-		boolean exists = false;
-		for (Account account : accounts) {
-			if (account.getAccountNr()==(accNr)) {
-				exists = true;
-				break;
-			}
-		}
-		return exists;
-	}
-	
-	public boolean closeAccount(Account account){
+	// Stänger ett konto som tillhör en kund
+	public boolean closeAccount(Account account) {
 		boolean isClosed;
-
 		try {
 			accounts.remove(account);
 			isClosed = true;
-		}catch(IndexOutOfBoundsException e){
+		} catch (IndexOutOfBoundsException e) {
 			System.err.println("Error" + e);
 			isClosed = false;
 		}
