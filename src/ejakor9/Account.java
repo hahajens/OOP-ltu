@@ -18,12 +18,16 @@ public class Account {
 		this.accountNumber = lastNumber;
 	}
 
-	public void deposit(double amount) {
-		if (amount <= 0) {
-			System.out.println("Amount to be deposited should be positive");
-		} else {
+	public boolean deposit(double amount) {
+		if (amount > 0) {
 			balance += amount;
+			System.out.println("deposit completed! \nYour balance is now: " + this.balance);
+			return true;
+		} else {
+			System.out.println("Amount to be deposited should be positive");
+			return false;
 		}
+		
 	}
 
 	public boolean withdraw(double amount) {
@@ -32,7 +36,7 @@ public class Account {
 			return false;
 		} else {
 			this.balance -= amount;
-			System.out.println("Your balance is now: " + this.balance);
+			System.out.println("Withdraw completed! \nYour balance is now: " + this.balance);
 			return true;
 		}
 	}
