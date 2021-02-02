@@ -130,11 +130,13 @@ public class BankLogic {
 		if (customerExists(pNr)) {
 			Customer customer = getCustomerObject(pNr);
 			Account account = customer.getAccountObject(accNr);
-			double interest = account.getInterest();
 
+			if(customer != null && account != null){
+			double interest = account.getInterest();
 			customer.closeAccount(account);
 			output = "The account with nr " + account.getAccountNr() + " " + " has been closed, the final interest is; "
 					+ interest + " kr";
+			}
 		} else {
 			System.err.println("Wrong input");
 		}
