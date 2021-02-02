@@ -1,0 +1,9 @@
+Error: withdraw(8505221898,1001,501.0)
+Error: withdraw(8505221898,1001,1.0)
+Error: withdraw(7505121231,1005,-100.0)
+Error: deposit(7505121231,1005,-1000.0)
+Exception in thread "main" java.lang.NullPointerException: Cannot invoke "ejakor9.Account.getInterest()" because "account" is null
+	at ejakor9.BankLogic.closeAccount(BankLogic.java:133)
+	at ejakor9.TestBank.testingCloseAccount(TestBank.java:542)
+	at ejakor9.TestBank.test(TestBank.java:371)
+	at ejakor9.TestBank.main(TestBank.java:558)
