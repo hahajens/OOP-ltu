@@ -1,7 +1,9 @@
 package ejakor9;
 
-// namn: Jens Karlsson
-// ltu användarnamn: ejakor-9
+/**
+ * Klass för att hantera kundens konto
+ * @author Jens Karlsson, ejakor-9-8
+ */
 
 public class Account {
 

@@ -1,7 +1,9 @@
 package ejakor9;
 
-//namn: Jens Karlsson
-//ltu användarnamn: ejakor-9
+/**
+ * Klass för att hantera funktionalitet i programmet,
+ * @author Jens Karlsson, ejakor-9-8
+ */
 
 import java.util.ArrayList;
 

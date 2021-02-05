@@ -3,9 +3,6 @@ package ejakor9;
 import java.io.*;
 import java.util.ArrayList;
 
-
-import ejakor9.BankLogic;
-
 /** 
  * 
  * D0018D, Lab 1: Testar klasserna Account, Customer and BankLogic  

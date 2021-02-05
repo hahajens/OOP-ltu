@@ -1,11 +1,10 @@
 package ejakor9;
 
-import ejakor9.*;
-
 import java.util.ArrayList;
-
-//namn: Jens Karlsson
-//ltu användarnamn: ejakor-9
+/**
+ * Klass för att hantera kunden
+ * @author Jens Karlsson, ejakor-9-8
+ */
 
 public class Customer {
 

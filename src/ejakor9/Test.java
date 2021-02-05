@@ -1,5 +1,10 @@
 // package ejakor9;
 
+/**
+ * egen testklass
+ * @author Jens Karlsson, ejakor-9-8
+ */
+
 // import ejakor9.Customer;
 
 // public class Test {
