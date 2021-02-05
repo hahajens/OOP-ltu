@@ -2,7 +2,7 @@ package ejakor9;
 
 /**
  * Klass för att hantera kundens konto
- * @author Jens Karlsson, ejakor-9-8
+ * @author Jens Karlsson, ejakor-9
  */
 
 public class Account {

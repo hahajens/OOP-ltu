@@ -3,7 +3,7 @@ package ejakor9;
 import java.util.ArrayList;
 /**
  * Klass för att hantera kunden
- * @author Jens Karlsson, ejakor-9-8
+ * @author Jens Karlsson, ejakor-9
  */
 
 public class Customer {

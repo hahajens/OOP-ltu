@@ -2,7 +2,7 @@
 
 /**
  * egen testklass
- * @author Jens Karlsson, ejakor-9-8
+ * @author Jens Karlsson, ejakor-9
  */
 
 // import ejakor9.Customer;
