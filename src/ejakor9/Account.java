@@ -5,13 +5,13 @@ package ejakor9;
  * @author Jens Karlsson, ejakor-9
  */
 
-public class Account {
+abstract class Account {
 
-	private double balance;
-	private final double rate;
-	private String typeOfAccount = "Savings account";
-	private int accountNumber;
-	private static int lastNumber = 1000;
+	protected double balance;
+	protected final double rate;
+	protected String typeOfAccount;
+	protected int accountNumber;
+	protected static int lastNumber = 1000;
 
 	// Konstruktor för konto
 	public Account() {
@@ -22,29 +22,10 @@ public class Account {
 	}
 
 	// Insättning på ett konto
-	public boolean deposit(double amount) {
-		if (amount > 0) {
-			balance += amount;
-			System.out.println("deposit completed! \nYour balance is now: " + this.balance);
-			return true;
-		} else {
-			System.out.println("Amount to be deposited should be positive");
-			return false;
-		}
-	}
+	abstract boolean deposit(double amount);
 
 	// Uttag på ett konto
-	public boolean withdraw(double amount) {
-		if (amount > this.balance || amount < 0) {
-			System.out.println("You dont have enough balance on your account to withdraw " + amount
-					+ " kr, your balance is: " + this.balance);
-			return false;
-		} else {
-			this.balance -= amount;
-			System.out.println("Withdraw completed! \nYour balance is now: " + this.balance);
-			return true;
-		}
-	}
+	abstract boolean withdraw(double amount);
 
 	// Getters & Setters
 

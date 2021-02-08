@@ -67,12 +67,25 @@ public class BankLogic {
 		return nameChanged;
 	}
 
-	// Skapar ett nytt konto åt kund med dennes idnummer
+	// Skapar ett nytt sparkonto åt kund med dennes idnummer
 	public int createSavingsAccount(String pNo) {
 		int accountNumber = -1;
 		Customer customer = getCustomerObject(pNo);
 		if (customer != null) {
-			accountNumber = customer.createAccount();
+			accountNumber = customer.createSavingsAccount();
+		} else {
+			System.out.println("The customer with that id number doesnt exist");
+		}
+
+		return accountNumber;
+	}
+
+	// Skapar ett nytt kreditkonto åt kund med dennes idnummer
+	public int createCreditAccount(String pNo) {
+		int accountNumber = -1;
+		Customer customer = getCustomerObject(pNo);
+		if (customer != null) {
+			accountNumber = customer.createCreditAccount();
 		} else {
 			System.out.println("The customer with that id number doesnt exist");
 		}
