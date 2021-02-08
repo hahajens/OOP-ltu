@@ -14,15 +14,13 @@ public class BankLogic {
 	public ArrayList<String> getAllCustomers() {
 		ArrayList<String> stringList = new ArrayList<>();
 		for (Customer c : customerList) {
-			String s = c.toString();
-			stringList.add(s);
+			stringList.add(c.toString());
 		}
 		return stringList;
 	}
 
 	// Skapar en ny kund
 	public boolean createCustomer(String name, String surname, String pNo) {
-
 		if (!customerExists(pNo)) {
 			Customer customer = new Customer(name, surname, pNo);
 			customerList.add(customer);
@@ -67,9 +65,9 @@ public class BankLogic {
 		return nameChanged;
 	}
 
-	// Skapar ett nytt sparkonto åt kund med  idnummer
+	// Skapar ett nytt sparkonto åt kund med idnummer
 	public int createSavingsAccount(String pNo) {
-		int accountNumber = - 1;
+		int accountNumber = -1;
 		Customer customer = getCustomerObject(pNo);
 		if (customer != null) {
 			accountNumber = customer.createSavingsAccount();
@@ -79,9 +77,10 @@ public class BankLogic {
 
 		return accountNumber;
 	}
+
 	// Skapar ett nytt kreditkonto åt kund med dennes idnummer
 	public int createCreditAccount(String pNo) {
-		int accountNumber = - 1;
+		int accountNumber = -1;
 		Customer customer = getCustomerObject(pNo);
 		if (customer != null) {
 			accountNumber = customer.createCreditAccount();
@@ -138,7 +137,6 @@ public class BankLogic {
 		if (customerExists(pNr)) {
 			Customer customer = getCustomerObject(pNr);
 			Account account = customer.getAccountObject(accNr);
-
 			if (account != null) {
 				double interest = account.getInterest();
 				customer.closeAccount(account);
@@ -146,7 +144,7 @@ public class BankLogic {
 						+ " has been closed, the final interest is; " + interest + " kr";
 			}
 		} else {
-			System.out.println("Either personal ID or account ID was incorrect");
+			output = "Either personal ID or account ID was incorrect";
 		}
 		return output;
 	}

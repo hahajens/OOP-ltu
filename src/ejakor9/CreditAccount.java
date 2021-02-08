@@ -5,11 +5,13 @@ import java.util.ArrayList;
 public class CreditAccount extends Account {
     private double balance;
     private double creditLimit = -5000.0;
-    private double interestRate = 1.05;
-    private double debthRate = 1.07;
+    private double rate;
     private String typeOfAccount = "Credit Account";
-    private int accountNumber;
     ArrayList<Transaction> transactions = new ArrayList<>();
+
+    public CreditAccount(){
+        super();
+    }
 
     @Override
     //Insättning på konto
@@ -29,7 +31,7 @@ public class CreditAccount extends Account {
     public boolean withdraw(double amount) {
         if (this.balance - amount < creditLimit || amount < 0) {
             System.out.println("You dont have enough balance on your account to withdraw " + amount
-                    + " you can withdraw maxiumum " + (this.creditLimit-this.balance));
+                    + ". You can withdraw maxiumum " + Math.abs(this.creditLimit-this.balance));
             return false;
         } else {
             this.balance -= amount;
@@ -37,4 +39,16 @@ public class CreditAccount extends Account {
             return true;
         }
     }
+    public double getInterest() {
+        this.rate = this.balance > 0.0 ? 0.5 : 7.0;
+		return this.balance * this.rate / 100;
+    }
+
+  // Strängrepresentation av ett kontoobjekt
+    @Override
+	public String toString() {
+		return "\n\n" + "Account number: " + this.accountNumber + "\n" + "Type of Account: " + this.typeOfAccount + "\n" + "Balance: " + this.balance;
+
+	}
+
 }

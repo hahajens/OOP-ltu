@@ -8,15 +8,13 @@ package ejakor9;
 abstract class Account {
 
 	protected double balance;
-	protected final double rate;
 	protected String typeOfAccount;
 	protected int accountNumber;
 	protected static int lastNumber = 1000;
 
 	// Konstruktor för konto
-	public Account() {
+	protected Account() {
 		this.balance = 0;
-		this.rate = 1.1;
 		lastNumber++;
 		this.accountNumber = lastNumber;
 	}
@@ -33,9 +31,7 @@ abstract class Account {
 		return this.balance;
 	}
 
-	public double getInterest() {
-		return this.balance * rate / 100;
-	}
+	abstract double getInterest();
 
 	public String getAccountType() {
 		return this.typeOfAccount;
@@ -51,8 +47,7 @@ abstract class Account {
 
 	// Strängrepresentation av ett kontoobjekt
 	public String toString() {
-		return "Account number: " + this.accountNumber + "\n" + "Balance: " + this.balance + "\n" + "Type: "
-				+ this.typeOfAccount + "\n" + "Rate: " + rate;
+		return "Account number: " + this.accountNumber + "\n" + "Balance: " + this.balance;
 
 	}
 }
