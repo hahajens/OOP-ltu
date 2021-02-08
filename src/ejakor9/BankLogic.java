@@ -20,7 +20,7 @@ public class BankLogic {
 		return stringList;
 	}
 
-	// Skapa en ny kund
+	// Skapar en ny kund
 	public boolean createCustomer(String name, String surname, String pNo) {
 
 		if (!customerExists(pNo)) {
@@ -67,9 +67,9 @@ public class BankLogic {
 		return nameChanged;
 	}
 
-	// Skapar ett nytt sparkonto åt kund med dennes idnummer
+	// Skapar ett nytt sparkonto åt kund med  idnummer
 	public int createSavingsAccount(String pNo) {
-		int accountNumber = -1;
+		int accountNumber = - 1;
 		Customer customer = getCustomerObject(pNo);
 		if (customer != null) {
 			accountNumber = customer.createSavingsAccount();
@@ -79,10 +79,9 @@ public class BankLogic {
 
 		return accountNumber;
 	}
-
 	// Skapar ett nytt kreditkonto åt kund med dennes idnummer
 	public int createCreditAccount(String pNo) {
-		int accountNumber = -1;
+		int accountNumber = - 1;
 		Customer customer = getCustomerObject(pNo);
 		if (customer != null) {
 			accountNumber = customer.createCreditAccount();
