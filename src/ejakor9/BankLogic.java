@@ -1,7 +1,9 @@
 package ejakor9;
 
-//namn: Jens Karlsson
-//ltu användarnamn: ejakor-9
+/**
+ * Klass för att hantera funktionalitet i programmet,
+ * @author Jens Karlsson, ejakor-9
+ */
 
 import java.util.ArrayList;
 
@@ -12,25 +14,22 @@ public class BankLogic {
 	public ArrayList<String> getAllCustomers() {
 		ArrayList<String> stringList = new ArrayList<>();
 		for (Customer c : customerList) {
-			String s = c.toString();
-			stringList.add(s);
+			stringList.add(c.toString());
 		}
 		return stringList;
 	}
 
 	// Skapar en ny kund
 	public boolean createCustomer(String name, String surname, String pNo) {
-		boolean isCreated = false;
-		if (customerExists(pNo) == false) {
+		if (!customerExists(pNo)) {
 			Customer customer = new Customer(name, surname, pNo);
 			customerList.add(customer);
 			System.out.println("Customer named " + name + " " + surname + " was created");
-			isCreated = true;
+			return true;
 		} else {
 			System.out.println("A customer with that personal number already exists");
-			isCreated = false;
+			return false;
 		}
-		return isCreated;
 	}
 
 	// Få information om en kund med ett personnummer
@@ -66,12 +65,25 @@ public class BankLogic {
 		return nameChanged;
 	}
 
-	// Skapar ett nytt konto åt kund med dennes idnummer
+	// Skapar ett nytt sparkonto åt kund med idnummer
 	public int createSavingsAccount(String pNo) {
 		int accountNumber = -1;
 		Customer customer = getCustomerObject(pNo);
 		if (customer != null) {
-			accountNumber = customer.createAccount();
+			accountNumber = customer.createSavingsAccount();
+		} else {
+			System.out.println("The customer with that id number doesnt exist");
+		}
+
+		return accountNumber;
+	}
+
+	// Skapar ett nytt kreditkonto åt kund med dennes idnummer
+	public int createCreditAccount(String pNo) {
+		int accountNumber = -1;
+		Customer customer = getCustomerObject(pNo);
+		if (customer != null) {
+			accountNumber = customer.createCreditAccount();
 		} else {
 			System.out.println("The customer with that id number doesnt exist");
 		}
@@ -125,7 +137,6 @@ public class BankLogic {
 		if (customerExists(pNr)) {
 			Customer customer = getCustomerObject(pNr);
 			Account account = customer.getAccountObject(accNr);
-
 			if (account != null) {
 				double interest = account.getInterest();
 				customer.closeAccount(account);
@@ -133,7 +144,7 @@ public class BankLogic {
 						+ " has been closed, the final interest is; " + interest + " kr";
 			}
 		} else {
-			System.out.println("Either personal ID or account ID was incorrect");
+			output = "Either personal ID or account ID was incorrect";
 		}
 		return output;
 	}
@@ -153,6 +164,15 @@ public class BankLogic {
 
 		return deletedCustomer;
 	}
+
+	public ArrayList<String> getTransactions(String pNr, int accountId){
+		Customer customer = getCustomerObject(pNr);
+		Account account = customer.getAccountObject(accountId);
+		return account.getTransactions();
+
+	}
+
+
 
 	// Hjälpfunktion, kollar om en kund finns
 	private boolean customerExists(String pNr) {

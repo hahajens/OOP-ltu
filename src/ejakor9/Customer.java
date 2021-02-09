@@ -1,11 +1,12 @@
 package ejakor9;
 
-import ejakor9.*;
-
 import java.util.ArrayList;
 
-//namn: Jens Karlsson
-//ltu användarnamn: ejakor-9
+/**
+ * Klass för att hantera kunden
+ * 
+ * @author Jens Karlsson, ejakor-9
+ */
 
 public class Customer {
 
@@ -25,9 +26,16 @@ public class Customer {
 		}
 	}
 
-	// Skapar ett bankkonto tillhörande en kund
-	public int createAccount() {
-		Account account = new Account();
+	// Skapar ett sparkonto tillhörande en kund
+	public int createSavingsAccount() {
+		Account account = new SavingsAccount();
+		accounts.add(account);
+		return account.getAccountNr();
+	}
+
+	// Skapar ett kreditkonto tillhörande en kund
+	public int createCreditAccount() {
+		Account account = new CreditAccount();
 		accounts.add(account);
 		return account.getAccountNr();
 	}
