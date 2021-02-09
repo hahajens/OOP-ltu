@@ -1,5 +1,7 @@
 package ejakor9;
 
+import java.util.ArrayList;
+
 /**
  * Klass för att hantera kundens konto
  * @author Jens Karlsson, ejakor-9
@@ -11,6 +13,7 @@ abstract class Account {
 	protected String typeOfAccount;
 	protected int accountNumber;
 	protected static int lastNumber = 1000;
+	protected ArrayList<Transaction> transactions = new ArrayList<>();
 
 	// Konstruktor för konto
 	protected Account() {
@@ -26,6 +29,8 @@ abstract class Account {
 	abstract boolean withdraw(double amount);
 
 	// Getters & Setters
+
+	abstract ArrayList<String> getTransactions();
 
 	public double getBalance() {
 		return this.balance;

@@ -1,4 +1,9 @@
 package ejakor9;
+/**
+ * Klass för att hantera kundens kreditkonto,
+ * @author Jens Karlsson, ejakor-9
+ */
+
 
 import java.util.ArrayList;
 
@@ -19,6 +24,8 @@ public class CreditAccount extends Account {
         if (amount > 0) {
             balance += amount;
             System.out.println("deposit completed! \nYour balance is now: " + this.balance);
+            Transaction transaction = new Transaction(amount);
+            transactions.add(transaction);
             return true;
         } else {
             System.out.println("Amount to be deposited should be positive");
@@ -36,12 +43,22 @@ public class CreditAccount extends Account {
         } else {
             this.balance -= amount;
             System.out.println("Withdraw completed! \nYour balance is now: " + this.balance);
+            Transaction transaction = new Transaction((amount*-1));
+            transactions.add(transaction);
             return true;
         }
     }
     public double getInterest() {
         this.rate = this.balance > 0.0 ? 0.5 : 7.0;
 		return this.balance * this.rate / 100;
+    }
+
+    public ArrayList<String> getTransactions(){
+        ArrayList<String> strTransactions = new ArrayList<>();
+        for(Transaction transaction : transactions){
+            strTransactions.add(transaction.getInfo() + "\nBalance: " + this.balance);
+        }
+        return strTransactions;
     }
 
   // Strängrepresentation av ett kontoobjekt

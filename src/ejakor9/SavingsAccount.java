@@ -1,4 +1,11 @@
 package ejakor9;
+/**
+ * Klass för att hantera kundens sparkonto,
+ * @author Jens Karlsson, ejakor-9
+ */
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SavingsAccount extends Account {
     private double balance;
@@ -18,6 +25,8 @@ public class SavingsAccount extends Account {
         if (amount > 0) {
             balance += amount;
             System.out.println("deposit completed! \nYour balance is now: " + this.balance);
+            Transaction transaction = new Transaction(amount);
+            transactions.add(transaction);
             return true;
         } else {
             System.out.println("Amount to be deposited should be positive");
@@ -37,11 +46,15 @@ public class SavingsAccount extends Account {
                 this.balance -= (amount * 1.02);
                 nrOfWithdrawals++;
                 System.out.println("Withdraw completed! \nYour balance is now: " + this.balance + "\nsince you excessed your withdrawal limit there is a 2% rate");
+                Transaction transaction = new Transaction((amount*-1));
+                transactions.add(transaction);
                 return true;
             } else {
                 this.balance -= amount;
-                System.out.println("Withdraw completed! \nYour balance is now: " + this.balance);
                 nrOfWithdrawals++;
+                System.out.println("Withdraw completed! \nYour balance is now: " + this.balance);
+                Transaction transaction = new Transaction((amount*-1));
+                transactions.add(transaction);
                 return true;
             }
         }
@@ -55,7 +68,15 @@ public class SavingsAccount extends Account {
 	public String toString() {
 		return "\n\n" + "Account number: " + this.accountNumber + "\n" + "Type: " + this.typeOfAccount + "\n" + "Balance: " + this.balance + "\n" + "rate: " + rate;
 
-	}
+    }
+    
+    public ArrayList<String> getTransactions(){
+        ArrayList<String> strTransactions = new ArrayList<>();
+        for(Transaction transaction : transactions){
+            strTransactions.add(transaction.getInfo() + "\nBalance: " + this.balance+ "\n");
+        }
+        return strTransactions;
+    }
 
 
     //FIXME Sätt till noll efter ett år?!

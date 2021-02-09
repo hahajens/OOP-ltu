@@ -165,6 +165,15 @@ public class BankLogic {
 		return deletedCustomer;
 	}
 
+	public ArrayList<String> getTransactions(String pNr, int accountId){
+		Customer customer = getCustomerObject(pNr);
+		Account account = customer.getAccountObject(accountId);
+		return account.getTransactions();
+
+	}
+
+
+
 	// Hjälpfunktion, kollar om en kund finns
 	private boolean customerExists(String pNr) {
 		boolean exists = false;
