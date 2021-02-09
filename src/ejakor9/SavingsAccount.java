@@ -1,11 +1,6 @@
 package ejakor9;
-/**
- * Klass för att hantera kundens sparkonto,
- * @author Jens Karlsson, ejakor-9
- */
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class SavingsAccount extends Account {
     private double balance;
@@ -37,13 +32,12 @@ public class SavingsAccount extends Account {
     @Override
     // Uttag på ett konto
     public boolean withdraw(double amount) {
-        if (amount > this.balance || amount < 0) {
+        if (amount > this.balance || amount < 0 || (this.balance - (amount * 1.02)) < 0) {
             System.out.println("You dont have enough balance on your account to withdraw " + amount
                     + " kr, your balance is: " + this.balance);
             return false;
         } else {
             if (nrOfWithdrawals >= withdrawLimit) {
-                this.balance -= (amount * 1.02);
                 nrOfWithdrawals++;
                 System.out.println("Withdraw completed! \nYour balance is now: " + this.balance + "\nsince you excessed your withdrawal limit there is a 2% rate");
                 Transaction transaction = new Transaction((amount*-1));
