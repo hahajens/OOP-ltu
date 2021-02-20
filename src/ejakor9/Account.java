@@ -28,28 +28,21 @@ abstract class Account {
 	// Uttag på ett konto
 	abstract boolean withdraw(double amount);
 
-	// Getters & Setters
-
+	// Få transaktioner, känns rimligt att en kund måste kunna få detta oavsett konto
 	abstract ArrayList<String> getTransactions();
 
-	public double getBalance() {
-		return this.balance;
-	}
-
+	// Få ränta, känns rimligt att en kund måste kunna få detta oavsett konto
 	abstract double getInterest();
 
-	public String getAccountType() {
-		return this.typeOfAccount;
-	}
+	// Få kontotyp, känns rimligt att en kund måste kunna få detta oavsett konto
+	abstract String getAccountType(); 
+	
+	// Få kontonummer, känns rimligt att en kund måste kunna få detta oavsett konto
+	abstract int getAccountNr();
 
-	public int getAccountNr() {
-		return this.accountNumber;
-	}
-
-	public void setBalance(double balance) {
-		this.balance = balance;
-	}
-
+	// Få balans, känns rimligt att en kund måste kunna få detta oavsett konto
+	abstract double getBalance();
+  
 	// Strängrepresentation av ett kontoobjekt
 	public String toString() {
 		return "Account number: " + this.accountNumber + "\n" + "Balance: " + this.balance;

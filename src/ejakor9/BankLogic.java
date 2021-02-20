@@ -1,11 +1,13 @@
 package ejakor9;
 
+import java.util.ArrayList;
+
+
 /**
  * Klass för att hantera funktionalitet i programmet,
  * @author Jens Karlsson, ejakor-9
  */
 
-import java.util.ArrayList;
 
 public class BankLogic {
 	private static ArrayList<Customer> customerList = new ArrayList<Customer>();
