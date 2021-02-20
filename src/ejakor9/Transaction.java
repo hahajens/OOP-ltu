@@ -4,7 +4,10 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-
+/**
+ * Klass för att hantera kundens konto
+ * @author Jens Karlsson, ejakor-9
+ */
 public class Transaction {
     private Date date;
     private double amount;

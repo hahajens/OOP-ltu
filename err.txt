@@ -1,5 +1,0 @@
-Exception in thread "main" java.lang.NullPointerException: Cannot invoke "ejakor9.Account.getTransactions()" because "account" is null
-	at ejakor9.BankLogic.getTransactions(BankLogic.java:171)
-	at ejakor9.TestBank2.testingGetTransactions(TestBank2.java:479)
-	at ejakor9.TestBank2.test(TestBank2.java:139)
-	at ejakor9.TestBank2.main(TestBank2.java:485)

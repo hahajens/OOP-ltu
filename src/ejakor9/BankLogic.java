@@ -1,11 +1,13 @@
 package ejakor9;
 
+import java.util.ArrayList;
+
+
 /**
  * Klass för att hantera funktionalitet i programmet,
  * @author Jens Karlsson, ejakor-9
  */
 
-import java.util.ArrayList;
 
 public class BankLogic {
 	private static ArrayList<Customer> customerList = new ArrayList<Customer>();
@@ -165,14 +167,19 @@ public class BankLogic {
 		return deletedCustomer;
 	}
 
-	public ArrayList<String> getTransactions(String pNr, int accountId){
-		Customer customer = getCustomerObject(pNr);
-		Account account = customer.getAccountObject(accountId);
-		return account.getTransactions();
-
+	public ArrayList<String> getTransactions(String pNr, int accountId) {
+		ArrayList<String> list = new ArrayList<>();
+		try {
+			Customer customer = getCustomerObject(pNr);
+			Account account = customer.getAccountObject(accountId);
+			if(account != null) {
+				list = account.getTransactions();
+			}
+		} catch (NullPointerException e) {
+			System.err.println("Null Error: " + e);
+		}
+		return list;
 	}
-
-
 
 	// Hjälpfunktion, kollar om en kund finns
 	private boolean customerExists(String pNr) {
